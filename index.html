@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<style>
+    body {
+        display: flex;
+        justify-content: center;
+        background-color: rgb(233, 188, 233);
+    }
+
+    .content {
+        align-items: center;
+        border-radius: 15px;
+        border: 2px solid #fff;
+        width: 65vh;
+        padding: 10px 25px;
+    }
+
+    .inp_task {
+        border-radius: 5px;
+        border: none;
+        padding: 6px;
+        width: 80%;
+    }
+
+    .inp_task:focus {
+        outline: none;
+    }
+
+    .add {
+        padding: 6px;
+        width: 14%;
+        border-radius: 5px;
+        border: none;
+        color: white;
+        background: #6f146f;
+        font-weight: bold;
+        margin-left: 8px;
+    }
+
+    .add:hover {
+        background-color: rgb(119, 64, 119);
+        cursor: pointer;
+    }
+
+    .edit_btn {
+        padding: 6px;
+        width: auto;
+        border-radius: 5px;
+        border: none;
+        color: white;
+        background: #6f146f;
+        font-weight: bold;
+        margin-left: 5px;
+    }
+
+    .delete_btn {
+        padding: 6px;
+        width: auto;
+        border-radius: 5px;
+        border: none;
+        color: white;
+        background: #6f146f;
+        font-weight: bold;
+        margin-left: 5px;
+    }
+
+    .tasks {
+        display: flex;
+        flex-direction: row;
+        width: 100%;
+    }
+
+    .text {
+        display: flex;
+        align-items: center;
+        width: 100vh;
+    }
+
+    .buttons {
+        display: flex;
+        width: 100%;
+        flex-direction: row;
+        margin-left: 220px;
+        justify-content: center;
+    }
+
+    .edit_btn:hover {
+        background-color: rgb(119, 64, 119);
+        cursor: pointer;
+    }
+
+    .delete_btn:hover {
+        background-color: rgb(119, 64, 119);
+        cursor: pointer;
+    }
+
+    .table {
+        border: none;
+        width: 100%;
+        overflow: hidden;
+        border-start-start-radius: 10px;
+        border-top-right-radius: 10px;
+        border-collapse: collapse;
+    }
+
+    th {
+        background-color: #e37c7c;
+        color: white;
+        border: none;
+    }
+
+    .head {
+        display: flex;
+        flex-direction: row;
+        width: 100%;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .inp_search {
+        border-radius: 5px;
+        border: none;
+        padding: 6px;
+    }
+
+    .inp_search:focus {
+        outline: none;
+    }
+
+    .modal {
+        background: rgba(0, 0, 0, 0.3);
+        width: 100%;
+        height: 100%;
+        left: 0;
+        top: 0;
+        position: fixed;
+    }
+
+    .modal-content {
+        background-color: #fff;
+        width: 80%;
+        padding: 30px;
+        border-radius: 10px;
+        max-width: 250px;
+        margin: 15% auto;
+    }
+
+    .close {
+        float: right;
+        cursor: pointer;
+        font-size: 45px;
+    }
+
+    .update {
+        padding: 6px;
+        width: auto;
+        border-radius: 5px;
+        border: none;
+        color: white;
+        background: #6f146f;
+        font-weight: bold;
+        margin-left: 5px;
+        cursor: pointer;
+    }
+
+    .upd_task {
+        border-radius: 5px;
+        border: 1px solid black;
+        padding: 6px;
+
+    }
+
+    .update:hover {
+        background-color: rgb(119, 64, 119);
+        cursor: pointer;
+    }
+</style>
+
+<body>
+    <div class="main">
+        <div class="content">
+            <h2>Add Task<i class="bi bi-plus-square" style="margin-left: 5px; font-size: 1.3rem;"></i></h2>
+            <input type="text" placeholder="Enter Your Task Here" class="inp_task" id="input">
+            <button id="add_btn" class="add" onclick="add()">Add</button>
+            <div class="head">
+                <h2><i class="bi bi-card-list" style="margin-right: 5px; font-size: 1.5rem;"></i>Your Tasks</h2>
+                <input type="text" id="search" class="inp_search" placeholder="Search Task" onkeyup="search()">
+            </div>
+            <div class="tasks" id="task">
+                <table border="1" cellspacing="0" cellpadding="10px" class="table">
+                    <thead>
+                        <tr>
+                            <th style="width: 65%;">Tasks</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+
+                    <tbody id="tbody"></tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal" id="modal" style="display: none;">
+        <div class="modal-content">
+            <span class="close" id="close_btn">&times;</span>
+            <h2>Update Task</h2>
+            <input type="text" name="task" id="upd_task" class="upd_task">
+            <input type="hidden" id="old_task">
+            <button id="update" class="update" onclick="update()">Update</button>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+
+</html>
