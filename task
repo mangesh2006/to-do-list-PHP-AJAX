@@ -3,4 +3,3 @@
     <button class="edit_btn"><i class="bi-pencil" style="font-size: medium; margin-right: 5px;" onclick="modify()"></i>Edit</button>
     <button class="delete_btn"><i class="bi-trash" style="font-size: medium; margin-right: 5px;" onclick="delTask()"></i>Delete</button>
 </div>
-
